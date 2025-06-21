@@ -11,7 +11,7 @@ CONTRACT_ADDRESS = os.getenv("CONTRACT_ADDRESS")
 w3 = Web3(Web3.HTTPProvider(INFURA_URL))
 
 # Load ABI
-with open("D:/RVCE/EL/software/blockchain/abi.json") as f:
+with open("blockchain/abi.json") as f:
     abi = json.load(f)
 
 contract = w3.eth.contract(address=CONTRACT_ADDRESS, abi=abi)
