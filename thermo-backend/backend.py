@@ -1,18 +1,14 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify
+from data_simulator import get_data
 
 app = Flask(__name__)
-sensor_data = {"hot": 0, "cold": 0, "power": 0, "pressure": 0}
 
-@app.route("/data", methods=["POST"])
-def update_data():
-    global sensor_data
-    sensor_data = request.json
-    return {"status": "received"}
+@app.route('/data')
+def data():
+    try:
+        return jsonify(get_data())
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
-@app.route("/data", methods=["GET"])
-def get_data():
-    return jsonify(sensor_data)
-
-if __name__ == "__main__":
-    app.run(app.run(host="0.0.0.0", port=5000)
-)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)  # Important for Render
