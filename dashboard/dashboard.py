@@ -74,11 +74,11 @@ else:
     if menu == "Live Monitor":
         st.subheader("📡 Real-Time Monitoring")
         if data:
-            hot = data["hot"]
-            cold = data["cold"]
+            hot = data.get("hot", 0)
+            cold = data.get("cold", 0)
+            power = data.get("power", 0)
+            pressure = data.get("pressure", 0)
             delta_t = round(hot - cold, 2)
-            power = data["power"]
-            pressure = data["pressure"]
 
             st.metric("Hot Temp (°C)", hot)
             st.metric("Cold Temp (°C)", cold)
@@ -108,7 +108,6 @@ else:
                 st.session_state.repair_confirmed = True
                 st.session_state.failure_logged = False
                 st.success("✅ Repair confirmed and payment released automatically.")
-
         else:
             st.warning("⚠️ Backend not reachable")
 
