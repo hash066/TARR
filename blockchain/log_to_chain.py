@@ -17,8 +17,9 @@ w3 = Web3(Web3.HTTPProvider(INFURA_URL))
 assert w3.is_connected(), "❌ Not connected to Web3. Check INFURA_URL."
 
 # Load ABI from file
-with open("D:/RVCE/EL/software/blockchain/abi.json") as f:
+with open(os.path.join(os.path.dirname(__file__), "abi.json")) as f:
     abi = json.load(f)
+
 
 # Create contract instance
 contract = w3.eth.contract(address=CONTRACT_ADDRESS, abi=abi)
