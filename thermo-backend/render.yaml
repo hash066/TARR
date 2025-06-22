@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: thermo-backend
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: python backend.py
+    envVars:
+      - key: FLASK_ENV
+        value: development
