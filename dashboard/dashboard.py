@@ -17,7 +17,7 @@ st.set_page_config(page_title="TAR Smart Dashboard", layout="wide")
 # Fetch function
 def fetch_data():
     try:
-        response = requests.get("http://127.0.0.1:5000/data")
+        response = requests.get("https://tarr-thermobackend.onrender.com/data")
         return response.json()
     except:
         return {}
